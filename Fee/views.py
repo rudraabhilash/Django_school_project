@@ -17,7 +17,7 @@ def payment_form(request):
         form = PaymentForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect("success")
+            return redirect("feesuccess")
         else:
             return HttpResponse(form)
             return render(request, 'myfirst.html', {'form': form})
