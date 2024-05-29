@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subjects</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        html, body {
+            font-family: 'Roboto', sans-serif; /* Use Roboto font */
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #000000, #333333); /* Smooth gradient from black to dark gray */
+            color: white; /* Default text color white */
+            height: 100%; /* Ensure the HTML and body elements cover the entire viewport height */
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .table-container {
+            background: linear-gradient(to bottom, #000000, #333333); /* Same gradient background for the table */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Slight shadow for better visibility */
+        }
+        .table thead th {
+            background-color: #555555; /* Dark grey header background */
+            color: white; /* White header text */
+        }
+        .table tbody tr {
+            background-color: transparent; /* Transparent row background */
+        }
+        .table tbody td {
+            color: white; /* White table data text */
+            border-color: #555555; /* Dark grey border color */
+            vertical-align: middle; /* Vertically center the table data */
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: white; /* White header text */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="table-container">
+            <h1>List of Subjects</h1>
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Subject Name</th>
+                        <th>Teachers</th>
+                        <th>Books</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for subject in subjects %}
+                    <tr>
+                        <td>{{ subject.subject_name }}</td>
+                        <td>{{ subject.teachers }}</td>
+                        <td>{{ subject.books }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Management System</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #34495e;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: space-around;
+            background-color: #2c3e50;
+        }
+        nav a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-align: center;
+        }
+        nav a:hover {
+            background-color: #1abc9c;
+            color: white;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+        .card {
+            background-color: white;
+            width: 220px;
+            margin: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s;
+            text-decoration: none;
+            color: inherit;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .card img {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 15px;
+            border-radius: 50%;
+            border: 2px solid #1abc9c;
+        }
+        .card h3 {
+            margin-bottom: 15px;
+            color: #34495e;
+        }
+        .card p {
+            color: #777;
+        }
+        footer {
+            background-color: #34495e;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>School Management System</h1>
+</header>
+
+<nav>
+    <a href="{% url 'marksheet' %}">Marksheet</a>
+    <a href="{% url 'award_winnerspage' %}">Games</a>
+    <a href="{% url 'student_attendance' %}">Attendance</a>
+    <a href="{% url 'login' %}">User</a>
+    <a href="{% url 'Student' %}">Student</a>
+    <a href="{% url 'fees' %}">FEE</a>
+    <a href="{% url 'event' %}">Events</a>
+</nav>
+
+<div class="container">
+    <a href="{% url 'marksheet' %}" class="card" id="marksheet">
+        <img src="https://via.placeholder.com/100" alt="Marksheet">
+        <h3>Marksheet</h3>
+        <p>View and manage student marksheets</p>
+    </a>
+    <a href="{% url 'award_winnerspage' %}" class="card" id="games">
+        <img src="https://via.placeholder.com/100" alt="Games">
+        <h3>Games</h3>
+        <p>Manage and schedule school games</p>
+    </a>
+    <a href="{% url 'student_attendance' %}" class="card" id="attendance">
+        <img src="https://via.placeholder.com/100" alt="Attendance">
+        <h3>Attendance</h3>
+        <p>Track student attendance records</p>
+    </a>
+    <a href="{% url 'login' %}" class="card" id="user">
+        <img src="https://via.placeholder.com/100" alt="User">
+        <h3>User</h3>
+        <p>Manage user accounts and profiles</p>
+    </a>
+    <a href="{% url 'Student' %}" class="card" id="student">
+        <img src="https://via.placeholder.com/100" alt="Student">
+        <h3>Student</h3>
+        <p>View and manage student details</p>
+    </a>
+    <a href="{% url 'fees' %}" class="card" id="payment">
+        <img src="https://via.placeholder.com/100" alt="Payment">
+        <h3>Payment</h3>
+        <p>Manage payment records and dues</p>
+    </a>
+    <a href="{% url 'event' %}" class="card" id="events">
+        <img src="https://via.placeholder.com/100" alt="Events">
+        <h3>Events</h3>
+        <p>View and manage school events</p>
+    </a>
+</div>
+
+<footer>
+    <p>School Management System &copy; 2024</p>
+</footer>
+
+</body>
+</html>

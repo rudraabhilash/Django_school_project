@@ -1,0 +1,61 @@
+<!-- data_table.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Table</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid rgb(239, 226, 226);
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            color: white; /* Make header text white */
+        }
+        td {
+            color: white; /* Make table data text white */
+        }
+
+        html {
+            font-family: 'Roboto', sans-serif; /* Use Roboto font */
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #000000, #333333); /* Smooth gradient from black to dark gray */
+            background-repeat: no-repeat;
+            height: 100%; /* Ensure the HTML element covers the entire viewport height */
+        }
+        h1 {
+            color: white;
+            text-align: center; /* Center the header text */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Fee Details</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Standard Id</th>
+                    <th>Fee</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for x in myfee %}
+                    <tr>
+                        <td>{{ x.standard_id }}</td>
+                        <td>{{ x.fee }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

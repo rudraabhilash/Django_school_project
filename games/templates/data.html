@@ -1,0 +1,144 @@
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        html {
+            font-family: 'Roboto', sans-serif; /* Use Roboto font */
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #000000, #333333); /* Smooth gradient from black to dark gray */
+            background-repeat: no-repeat;
+            height: 100%; /* Ensure the HTML element covers the entire viewport height */
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #ffffff;
+            margin-top: 50px;
+            animation: fadeInDown 1s ease; /* Fade in animation */
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            animation: slideInLeft 1s ease; /* Slide in animation */
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #dddddd;
+        }
+
+        p {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s ease; /* Smooth transition for text color */
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: #4CAF50; /* Change link color on hover */
+        }
+
+        /* Smoother border radius for the form */
+        form {
+            border-radius: 15px;
+        }
+
+        /* Keyframes for animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+  <h1>SPORT</h1>
+  
+<table>
+    <tr>   
+        <th>STUDENT ID</th>
+        <th>GAME WON ID</th>
+        <th>DATE</th>
+        <th>LEVEL</th>\
+        <th>MEDEL TYPE</th>
+        <th>Achievements</th>
+    </tr>
+    {% for x in boy %}
+    <tr>
+        <td>{{ x.student_id }}</td>
+        <td>{{ x.game_won_id  }}</td>
+        <td>{{ x.date }}</td>
+        <td>{{ x.level }}</td>
+        <td>{{ x.medal_type }}</td>
+        <td>{{ x.achivements }}</td>
+
+    </tr>
+    {% endfor %}
+</table>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

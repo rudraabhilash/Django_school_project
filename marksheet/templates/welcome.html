@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Our Site</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0; /* Light grey background color */
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+        .content {
+            text-align: center;
+        }
+        .heading {
+            font-size: 65px;
+            margin-bottom: 20px;
+            color: #333333; /* Dark grey color */
+        }
+        .message {
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: #666666; /* Medium grey color */
+        }
+        .redirect-link {
+            text-decoration: none;
+            color: #007bff; /* Blue color */
+            font-weight: bold;
+        }
+        .redirect-link:hover {
+            text-decoration: underline;
+        }
+        /* Add background photo */
+        body {
+            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPvDQ01SrNqieihIB_dDubUH4Iko9mCzum1w&usqp=CAU');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body>
+    <form method="post" action="{% url 'submitform_process' %}">
+        {% csrf_token %}
+    <div class="container">
+        <div class="content">
+            <h1 class="heading">Welcome To Our School</h1>
+            <p class="message">Redirecting you to the marksheet creation page...</p>
+            <p>If you are not redirected automatically, <a href="/marksheet/" class="marksheet/">click here</a>.</p>
+        </div>
+    </div>
+</body>
+</html>

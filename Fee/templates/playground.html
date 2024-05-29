@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payment Form</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: whitesmoke;
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        max-width: 600px;
+        margin: 50px auto;
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    }
+    h1 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 20px;
+    }
+    .form-group {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+    .form-group label {
+        flex: 0 0 150px;
+        margin-right: 10px;
+        color: #555;
+        font-weight: bold;
+    }
+    .form-group input[type="text"],
+    .form-group input[type="date"] {
+        flex: 1;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+        background-color: #f9f9f9;
+        transition: background-color 0.3s ease;
+    }
+    .form-group input[type="text"]:focus,
+    .form-group input[type="date"]:focus {
+        background-color: #e0f7fa;
+        border-color: #007bff;
+    }
+    input[type="submit"] {
+        width: 100%;
+        background-color: #007BFF;
+        color: white;
+        padding: 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+    }
+    input[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Payment Form</h1>
+    <form action="/submitform" method="post">
+
+        <div class="form-group">
+            <label for="student_id">Student Id:</label>
+            <input type="text" id="student_id" name="student_id" placeholder="Enter the student id" required>
+        </div>
+
+        <div class="form-group">
+            <label for="fee_paid">Fee Paid:</label>
+            <input type="text" id="fee_paid" name="fee_paid" placeholder="Enter the fee status" required>
+        </div>
+
+        <div class="form-group">
+            <label for="date_of_payment">Date of Payment:</label>
+            <input type="date" id="date_of_payment" name="date_of_payment" required>
+        </div>
+
+        <div class="form-group">
+            <label for="due">Due:</label>
+            <input type="text" id="due" name="due" placeholder="Enter the due amount" required>
+        </div>
+
+        <div class="form-group">
+            <label for="payment_mode">Payment Mode:</label>
+            <input type="text" id="payment_mode" name="payment_mode" placeholder="Enter the payment mode" required>
+        </div>
+
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
+</body>
+</html>

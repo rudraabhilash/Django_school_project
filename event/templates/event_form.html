@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payment Form</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(to bottom, #000000, #333333); 
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        max-width: 600px;
+        margin: 50px auto;
+        background-color: #000000;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    }
+    h1 {
+        text-align: center;
+        color: white;
+        margin-bottom: 20px;
+    }
+    .form-group {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+    .form-group label {
+        flex: 0 0 150px;
+        margin-right: 10px;
+        color: white;
+        font-weight: bold;
+    }
+    .form-group input[type="text"],
+    .form-group input[type="date"] {
+        flex: 1;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+        background-color: #f9f9f9;
+        transition: background-color 0.3s ease;
+    }
+    .form-group input[type="text"]:focus,
+    .form-group input[type="date"]:focus {
+        background-color: #e0f7fa;
+        border-color: #007bff;
+    }
+    input[type="submit"] {
+        width: 100%;
+        background-color: #06a03c;
+        color: white;
+        padding: 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+    }
+    input[type="submit"]:hover {
+        background-color: #e44d07;
+    }
+    .para{
+        color: white;
+    }
+    .url{
+        color: #06a03c;
+    }
+    .url:hover{
+        color: #e44d07;
+    }
+</style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Event Registration</h1>
+        <form method="post" action="/event_submit/" >
+            {% csrf_token %}
+        <div class="form-group">
+            <label for="event_name">Event Name:</label>
+            <input type="text" id="event_name" name="event_name" placeholder="Event name" required>
+        </div>
+        <div class="form-group">
+            <label for="event_date">Event Date:</label>
+            <input type="date" id="event_date" name="event_date" placeholder="Event date">
+        </div>
+        <div class="form-group">
+            <label for="event_duration">Event Duration (hours):</label>
+            <input type="number" id="event_duration" name="event_duration" placeholder="Event duration" required>
+        </div>
+        <div class="form-group">
+            <label for="event_guest">Event Guest:</label>
+            <input type="text" id="event_guest" name="event_guest" placeholder="Name of event guest" required>
+        </div>
+        <div class="form-group">
+            <label for="event_participation_count">Participation Count:</label>
+            <input type="number" id="event_participation_count" name="event_participation_count" placeholder="Number of participants" required>
+        </div>
+        <div class="form-group">
+            <label for="event_cost">Event Cost:</label>
+            <input type="number" id="event_cost" name="event_cost" placeholder="Event cost" required>
+        </div>
+        <div class="form-group">
+            <label for="event_type">Event Type:</label>
+            <input type="text" id="event_type" name="event_type" placeholder="Event type" required>
+        </div>
+        <div class="form-group">
+            <label for="event_winner_id">Event Winner ID:</label>
+            <input type="text" id="event_winner_id" name="event_winner_id" placeholder="Event winner id" required>
+        </div>
+        <div class="form-group">
+            <label for="event_image_location">Event Image Location:</label>
+            <input type="text" id="event_image_location" name="event_image_location" placeholder="Event images" required>
+        </div>
+            <input type="submit" value="Submit">
+        </form>
+        <p class="para"> click <a class="url" href="/event_details/">here</a> to know more about event</p>
+    </div>
+
+</body>
+</html>

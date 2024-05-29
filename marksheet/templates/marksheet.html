@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MARKSHEET</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        
+        body {
+            background-color: #a0d2eb; /* Light blue background */
+            font-family: 'Arial', sans-serif;
+        }
+        .form-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 30px;
+            border-radius: 10px;
+            background-color: #ffdc6a; /* White form background */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-heading {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #007bff; /* Blue color */
+        }
+        .form-group label {
+            color: #333333; /* Dark grey label color */
+        }
+        .form-control {
+            border-radius: 5px;
+            border: 1px solid #4f5f76; /* Light grey border */
+            padding: 10px;
+        }
+        .btn-primary {
+            background-color: #007bff; /* Blue button background */
+            border-color: #007bff;
+            padding: 10px 20px;
+
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #0c00b3; /* Darker blue on hover */
+        }
+        .form-footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .form-footer a {
+            color: #007bff; /* Blue link color */
+            text-decoration: none;
+        }
+        .form-footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h2 class="form-heading">MARKSHEET</h2>
+            <form method="post" action="{% url 'submitform_process' %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="student_id">Student ID</label>
+                    <input type="number" id="student_id" name="student_id" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="english_marks">English Marks</label>
+                    <input type="number" id="english_marks" name="english_marks" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="hindi_marks">Hindi Marks</label>
+                    <input type="number" id="hindi_marks" name="hindi_marks" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="maths_marks">Maths Marks</label>
+                    <input type="number" id="maths_marks" name="maths_marks" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="science_marks">Science Marks</label>
+                    <input type="number" id="science_marks" name="science_marks" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="socialstudy_marks">Social Study Marks</label>
+                    <input type="number" id="socialstudy_marks" name="socialstudy_marks" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="session">Session</label>
+                    <select id="session" name="session" class="form-control" required>
+                        <option value="mid_year">Mid Year</option>
+                        <option value="end_year">End Year</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Save</button>
+            </form>
+            <p>If you want to know subject_details, <a href="/subject_view" class="subject_view/">click here</a>.</p>
+            
+               
+            </div>
+        </div>
+    </div>
+</body>
+</html>

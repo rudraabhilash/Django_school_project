@@ -1,0 +1,96 @@
+<!-- data_table.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Table</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: white;
+            color: white;
+        }
+        .container {
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: black;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            color: white;
+            background-color: #A9A9A9;
+        }
+        th {
+            background-color: #36454F;
+            font-weight: bold;
+            color: white;
+            text-transform: uppercase;
+        }
+        tr:hover {
+            background-color: #A9A9A9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Student Table</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Class</th>
+                    <th>Roll No</th>
+                    <th>DOB</th>
+                    <th>DOJ</th>
+                    <th>Gender</th>
+                    <th>Address</th>
+                    <th>Height</th>
+                    <th>Creator ID</th>
+                    <th>Last User ID</th>
+                    <th>Photo Location</th>
+                    <th>Is Active</th>
+                    <th>Session</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for x in sdetails %}
+                    <tr>
+                        <td>{{ x.roll_no }}</td>        
+                        <td>{{ x.firstname }}</td>
+                        <td>{{ x.lastname }}</td>
+                        <td>{{ x.dob }}</td>
+                        <td>{{ x.doj }}</td>
+                        <td>{{ x.address }}</td>
+                        <td>{{ x.height }}</td>
+                        <td>{{ x.gender }}</td>
+                        <td>{{ x.standard_id }}</td>
+                        <td>{{ x.creator_id }}</td>
+                        <td>{{ x.last_user_id }}</td>
+                        <td>{{ x.is_active }}</td>
+                        <td>{{ x.session }}</td>
+                        <td>{{ x.photo_location }}</td>
+                        </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

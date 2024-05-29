@@ -1,0 +1,75 @@
+<!-- data_table.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Table</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid rgb(239, 226, 226);
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            color: white; /* Make header text white */
+        }
+        td {
+            color: white; /* Make table data text white */
+        }
+
+        html {
+            font-family: 'Roboto', sans-serif; /* Use Roboto font */
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #000000, #333333); /* Smooth gradient from black to dark gray */
+            background-repeat: no-repeat;
+            height: 100%; /* Ensure the HTML element covers the entire viewport height */
+        }
+        h1 {
+            color: white;
+            text-align: center; /* Center the header text */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Event Details</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>event_name</th>
+                    <th>event_date</th>
+                    <th>event_duration</th>
+                    <th>event_guest</th>
+                    <th>event_participation_count</th>
+                    <th>event_cost</th>
+                    <th>event_type</th>
+                    <th>event_winner_id</th>
+                    <th>event_image_location</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for x in mydata %}
+                    <tr>
+                        <td>{{x.event_name }}</td>        
+                        <td>{{x.event_date  }}</td>
+                        <td>{{x.event_duration }}</td>
+                        <td>{{x.event_guest }}</td>
+                        <td>{{x.event_participation_count }}</td>
+                        <td>{{x.event_cost }}</td>
+                        <td>{{x.event_type }}</td>
+                        <td>{{x.event_winner_id }}</td>
+                        <td>{{x.event_image_location }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

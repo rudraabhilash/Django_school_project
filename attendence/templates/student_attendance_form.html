@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Attendance Form</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"> <!-- Importing Roboto font from Google Fonts -->
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif; /* Use Roboto font */
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #000000, #333333); /* Smooth gradient from black to dark gray */
+            background-repeat: no-repeat;
+        }
+
+        .container {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        form {
+            background: linear-gradient(to bottom, #ffffff, #f9f9f9); /* Gradient from white to lighter gray */
+            width: 400px;
+            margin: 0 auto;
+            padding: 30px;
+            border-radius: 20px; /* Adjusted border radius */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease;
+        }
+
+        form:hover {
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            margin-bottom: 30px;
+            color: #ffffff; /* White text color */
+            font-weight: 700; /* Make the font bold */
+            letter-spacing: 2px; /* Add some letter spacing */
+            text-transform: uppercase; /* Convert text to uppercase */
+            transition: color 0.3s ease; /* Smooth transition for color change */
+        }
+
+        h1:hover {
+            color: #4CAF50; /* Change color on hover */
+        }
+
+        h2 {
+            color: #ffffff; /* White text color */
+            font-weight: 700; /* Make the font bold */
+            letter-spacing: 1px; /* Add some letter spacing */
+            text-transform: uppercase; /* Convert text to uppercase */
+            margin-bottom: 20px; /* Add space below the text */
+        }
+
+        label {
+            font-weight: bold;
+            color: #333333; /* Adjusted label color */
+            transition: color 0.3s ease; /* Smooth transition for color change */
+        }
+
+        input[type="text"],
+        input[type="datetime-local"],
+        input[type="date"],
+        input[type="submit"] {
+            width: calc(100% - 20px);
+            padding: 12px 15px;
+            margin: 10px 0 25px 0;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+            background-color: transparent; /* Transparent background */
+            transition: border-color 0.3s ease, background-color 0.3s ease;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        input[type="text"]:hover,
+        input[type="datetime-local"]:hover,
+        input[type="date"]:hover {
+            border-color: #aaaaaa;
+        }
+
+        label:hover {
+            color: #4CAF50; /* Change color on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Student Attendance Page</h1>
+        <form method="post" action="{% url 'student_attendance_entry_process' %}">
+            {% csrf_token %}
+            <label for="student_id">Student ID:</label><br>
+            <input type="text" name="student_id" id="student_id" placeholder="Enter Student ID"><br>
+          
+            <label for="entry_time">Entry Time:</label><br>
+            <input type="datetime-local" name="entry_time" id="entry_time" placeholder="Enter Entry Time"><br>
+          
+            <label for="exit_time">Exit Time:</label><br>
+            <input type="datetime-local" name="exit_time" id="exit_time" placeholder="Enter Exit Time"><br>
+          
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+</html>
