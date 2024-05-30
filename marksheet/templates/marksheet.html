@@ -14,7 +14,7 @@
             margin: 50px auto;
             padding: 30px;
             border-radius: 10px;
-            background-color: #2b2a26; /* Form background */
+            background-color: #000000; /* Form background */
             box-shadow: 0 0 10px (0, 0, 0, 0.1);
             color: white; /* White text color */
         }
@@ -34,7 +34,7 @@
             background-color: #333333; /* Dark background for the form controls */
         }
         .btn-primary {
-            background-color: #007bff; /* Blue button background */
+            background-color: #00FF00; /* Blue button background */
             border-color: #007bff;
             padding: 10px 20px;
             border-radius: 5px;
@@ -60,7 +60,7 @@
     <div class="container">
         <div class="form-container">
             <h2 class="form-heading">MARKSHEET</h2>
-            <form method="post" action="{% url 'submitform_process' %}">
+            <form method="post" action="{% url 'marksheet_form_submit' %}">
                 {% csrf_token %}
                 <div class="form-group">
                     <label for="student_id">Student ID</label>

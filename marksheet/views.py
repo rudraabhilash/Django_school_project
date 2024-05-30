@@ -4,9 +4,7 @@ from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from .models import Marksheet, Subject
 
-@csrf_exempt
-def welcome(request):
-    return render(request, 'welcome.html')
+
 
 def marksheet(request):
     return render(request, 'marksheet.html')
@@ -32,7 +30,7 @@ def submitform_process(request):
             session=session
         )
         temp.save()
-        return redirect("/marksheetsuccess")  # Assuming this is the URL for success page
+        return redirect("marksheetsuccess")  # Assuming this is the URL for success page
     else:
         return HttpResponse("Invalid request method.")
 
