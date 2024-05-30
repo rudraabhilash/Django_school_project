@@ -7,7 +7,7 @@ from django.shortcuts import render, loader,redirect
 
 # Create your views here.
 
-
+# this function shows student attendance form to students
 def student_attendance(request):
     return render(request,'student_attendance_form.html')
 
