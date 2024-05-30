@@ -4,6 +4,8 @@ from django.shortcuts import render, redirect
 from .models import Marksheet
 from django.template import loader
 from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
+@csrf_exempt
 def welcome(request):
     
   
@@ -16,6 +18,7 @@ def marksheet(request):
   
     return render(request, 'marksheet.html',)
 
+@csrf_exempt
 def submitform_process(request):
  if request.method == 'POST':
         student_id = request.POST.get('student_id')
