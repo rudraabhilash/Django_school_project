@@ -11,6 +11,8 @@ def event_form(request):
     template = loader.get_template('event_form.html')
     return HttpResponse(template.render())
 
+#event form submit function
+
 @csrf_exempt
 def event_form_submit(request):
     if request.method == 'POST':
@@ -22,11 +24,12 @@ def event_form_submit(request):
             #form = Event_Form()
             return HttpResponse("data not filled correctly!")
         
-     
+#event success page     
 def submited_form(request):
      template = loader.get_template('eventsuccess.html')
      return HttpResponse(template.render())
 
+#event detailing function
 def event_details(request):
     mydetails= Event_Table.objects.all().values()
     template = loader.get_template('submit.html')
@@ -34,4 +37,4 @@ def event_details(request):
         'mydata':mydetails,
     }  
     return HttpResponse(template.render(context, request))  
-    
+
