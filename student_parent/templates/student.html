@@ -73,20 +73,20 @@
             <tbody>
                 {% for x in sdetails %}
                     <tr>
-                        <td>{{ x.roll_no }}</td>        
-                        <td>{{ x.firstname }}</td>
+                        <td>{{ x.firstname }}</td>        
                         <td>{{ x.lastname }}</td>
+                        <td>{{ x.standard_id }}</td>
+                        <td>{{ x.roll_no }}</td>
                         <td>{{ x.dob }}</td>
                         <td>{{ x.doj }}</td>
+                        <td>{{ x.gender }}</td>
                         <td>{{ x.address }}</td>
                         <td>{{ x.height }}</td>
-                        <td>{{ x.gender }}</td>
-                        <td>{{ x.standard_id }}</td>
                         <td>{{ x.creator_id }}</td>
                         <td>{{ x.last_user_id }}</td>
+                        <td>{{ x.photo_location }}</td>
                         <td>{{ x.is_active }}</td>
                         <td>{{ x.session }}</td>
-                        <td>{{ x.photo_location }}</td>
                         </tr>
                 {% endfor %}
             </tbody>
