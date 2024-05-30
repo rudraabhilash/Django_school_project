@@ -1,13 +1,13 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .forms import student_attendance_form
-from .models import standard,schedule
+from .models import standard,schedule,attendance
 from django.shortcuts import render, loader,redirect
 
 
 # Create your views here.
 
-# this function shows student attendance form to students
+
 def student_attendance(request):
     return render(request,'student_attendance_form.html')
 
@@ -16,7 +16,7 @@ def student_attendance_entry_process(request):
         form = student_attendance_form(request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponse('ATTENDANCE MARKED')
+            return redirect('/student_attendance_response')
 
 
 def Standard(request):
@@ -36,5 +36,16 @@ def Schedule(request):
         'data': cur,
     }
     return HttpResponse(template.render(context, request))
+
+
+def student_attendance_response(request):
+    fetched = attendance.objects.all().values()   
+    template = loader.get_template('student_attendence_response.html')
+    context = {
+        'temp': fetched,
+    }
+    return HttpResponse(template.render(context, request))
+
+
 
        
