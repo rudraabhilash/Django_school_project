@@ -1,29 +1,30 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.template import loader
-
+from django.views.decorators.csrf import csrf_exempt
 from .forms import formDataToTableColMap, formParaentDataToTableCoMap
 from .models import Student, Parent
 	
 def student(request):
     return render(request,'studentRegistration.html')
-
+@csrf_exempt
 def submitform1(response):
     #return HttpResponse(response.POST)
+    template = loader.get_template('parent_form.html')
     if response.method == 'POST':
         form = formDataToTableColMap(response.POST)
         if form.is_valid():
             form.save()
-            return HttpResponse("Data successfully inserted!")
+            return HttpResponse(template.render())
         else:
             return HttpResponse("data not filled correctlly!")
-        
-def submitform2(request):  
-    if request.method == 'POST':
-        forms = formParaentDataToTableCoMap(request.POST)
+@csrf_exempt       
+def submitform2(response):  
+    if response.method == 'POST':
+        forms = formParaentDataToTableCoMap(response.POST)
         if forms.is_valid():
             forms.save()
-            return HttpResponse("Data successfully inserted!")
+            return render(response,'student_success.html')
         else:
             return HttpResponse("data not filled correctlly!")      
 
