@@ -7,51 +7,96 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"> <!-- Importing Roboto font from Google Fonts -->
     <style>
         body {
-            font-family: 'Roboto', sans-serif; /* Use Roboto font */
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(to bottom, #000000, #333333); /* Smooth gradient from black to dark gray */
-            background-repeat: no-repeat;
+            background: linear-gradient(to bottom, #000000, #333333) repeat-y; /* Smooth gradient from black to dark gray, repeatable vertically */
+            min-height: 100vh; /* Ensures that the gradient covers the full height of the viewport */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .home-link {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        .home-link a {
+            text-decoration: none;
+            color: #ffffff;
+            background-color: #4CAF50;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease; /* Add transition for background color and transform */
+        }
+
+        .home-link a:hover {
+            background-color: #45a049;
+            transform: translateY(-2px); /* Slight lift effect on hover */
+        }
+
+        .header {
+            text-align: center; /* Center align the heading */
+            margin-top: 20px; /* Adjusted margin for spacing */
+            animation: slideDown 1s ease; /* Apply slide down animation */
+        }
+
+        .header h1 {
+            margin: 0;
+            color: #ffffff;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        .header h1:hover {
+            color: #4CAF50; /* Change color on hover */
+        }
+
+        .nav-links {
+            width: 100%;
+            display: flex;
+            justify-content: space-between; /* Distribute space between the links */
+            padding: 20px;
+            box-sizing: border-box;
+            background-color: rgba(0, 0, 0, 0.5);
+            margin-top: 20px; /* Space below the header */
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #ffffff;
+            background-color: #4CAF50;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease; /* Add transition for background color and transform */
+        }
+
+        .nav-links a:hover {
+            background-color: #45a049;
+            transform: translateY(-2px); /* Slight lift effect on hover */
         }
 
         .container {
             text-align: center;
-            margin-top: 50px;
+            margin-top: 20px;
         }
 
         form {
             background: linear-gradient(to bottom, #ffffff, #f9f9f9); /* Gradient from white to lighter gray */
             width: 400px;
-            margin: 0 auto;
             padding: 30px;
             border-radius: 20px; /* Adjusted border radius */
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
             transition: box-shadow 0.3s ease;
+            margin: 0 auto; /* Center the form horizontally */
         }
 
         form:hover {
             box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
-        }
-
-        h1 {
-            margin-bottom: 30px;
-            color: #ffffff; /* White text color */
-            font-weight: 700; /* Make the font bold */
-            letter-spacing: 2px; /* Add some letter spacing */
-            text-transform: uppercase; /* Convert text to uppercase */
-            transition: color 0.3s ease; /* Smooth transition for color change */
-        }
-
-        h1:hover {
-            color: #4CAF50; /* Change color on hover */
-        }
-
-        h2 {
-            color: #ffffff; /* White text color */
-            font-weight: 700; /* Make the font bold */
-            letter-spacing: 1px; /* Add some letter spacing */
-            text-transform: uppercase; /* Convert text to uppercase */
-            margin-bottom: 20px; /* Add space below the text */
         }
 
         label {
@@ -62,7 +107,6 @@
 
         input[type="text"],
         input[type="datetime-local"],
-        input[type="date"],
         input[type="submit"] {
             width: calc(100% - 20px);
             padding: 12px 15px;
@@ -73,6 +117,7 @@
             font-size: 16px;
             background-color: transparent; /* Transparent background */
             transition: border-color 0.3s ease, background-color 0.3s ease;
+            color: #333333; /* Ensure text is visible on transparent background */
         }
 
         input[type="submit"] {
@@ -80,36 +125,60 @@
             color: white;
             border: none;
             cursor: pointer;
+            font-size: 18px; /* Increase font size */
+            padding: 14px; /* Increase padding */
+            border-radius: 5px; /* Adjust border radius */
+            transition: background-color 0.3s ease, transform 0.3s ease; /* Add transition for background color and transform */
         }
 
         input[type="submit"]:hover {
             background-color: #45a049;
+            transform: translateY(-2px); /* Slight lift effect on hover */
         }
 
         input[type="text"]:hover,
-        input[type="datetime-local"]:hover,
-        input[type="date"]:hover {
+        input[type="datetime-local"]:hover {
             border-color: #aaaaaa;
         }
 
         label:hover {
             color: #4CAF50; /* Change color on hover */
         }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="home-link">
+        <a href="/">HOME</a>
+    </div>
+    <div class="header">
         <h1>Student Attendance Page</h1>
+    </div>
+    <div class="nav-links">
+        <a href="/standard">Go to Standard Details Page</a>
+        <a href="/schedule">Go to Schedule Details Page</a>
+    </div>
+    <div class="container">
         <form method="post" action="{% url 'student_attendance_entry_process' %}">
             {% csrf_token %}
             <label for="student_id">Student ID:</label><br>
             <input type="text" name="student_id" id="student_id" placeholder="Enter Student ID"><br>
           
             <label for="entry_time">Entry Time:</label><br>
-            <input type="datetime-local" name="entry_time" id="entry_time" placeholder="Enter Entry Time"><br>
+            <input type="datetime-local" name="entry_time" id="entry_time"><br>
           
-            <label for="exit_time">Exit Time:</label><br>
-            <input type="datetime-local" name="exit_time" id="exit_time" placeholder="Enter Exit Time"><br>
+            <label for="exit_time">Exit Time:</label><br> 
+            <input type="datetime-local" name="exit_time" id="exit_time"><br>
           
             <input type="submit" value="Submit">
         </form>
