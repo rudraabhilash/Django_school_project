@@ -32,7 +32,7 @@ def submitform(request):
 
         return redirect('award_data/')
     else:
-        return HttpResponse("Invalid request method.")
+        return HttpResponse("Invalid requests method.")
     
 
 
