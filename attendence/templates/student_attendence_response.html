@@ -6,14 +6,16 @@
             font-family: 'Roboto', sans-serif; /* Use Roboto font */
             margin: 0;
             padding: 0;
-            background: linear-gradient(to bottom, #000000, #333333); /* Smooth gradient from black to dark gray */
-          
+            background: linear-gradient(to bottom, #000000, #333333 50%, #000000 100%) repeat-y; /* Smooth gradient from black to dark gray, repeated vertically */
+            background-size: 100% 400px; /* Set the background size to allow smooth repeating */
             height: 100%; /* Ensure the HTML element covers the entire viewport height */
         }
         
         body {
             margin: 0;
             padding: 0;
+            height: 100%;
+            background: inherit; /* Ensure the body inherits the background from html */
         }
         
         h1 {
@@ -44,15 +46,19 @@
             margin-top: 20px;
         }
 
-        a {
-            color: #ffffff;
+        .back-link {
+            color: #4CAF50; /* Green color */
             text-decoration: none;
-            transition: color 0.3s ease; /* Smooth transition for text color */
+            font-weight: bold;
+            padding: 10px 20px;
+            border: 2px solid #4CAF50;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for background and text color */
         }
 
-        a:hover {
-            text-decoration: underline;
-            color: #4CAF50; /* Change link color on hover */
+        .back-link:hover {
+            background-color: #4CAF50; /* Green background */
+            color: #ffffff; /* White text */
         }
 
         /* Smoother border radius for the form */
@@ -105,7 +111,7 @@
     {% endfor %}
 </table>
 
-<p><a href="/student_attendance">BACK TO  STUDENT ATTENDANCE PAGE</a></p>
+<p><a href="/student_attendance" class="back-link">BACK TO STUDENT ATTENDANCE PAGE</a></p>
 
 </body>
 </html>
