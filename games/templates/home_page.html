@@ -33,6 +33,15 @@
             background-color: #1abc9c;
             color: white;
         }
+        .image-container {
+            width: 100%;
+            overflow: hidden;
+        }
+        .image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
         .container {
             display: flex;
             flex-wrap: wrap;
@@ -94,7 +103,11 @@
     <a href="{% url 'fees' %}">FEE</a>
     <a href="{% url 'event' %}">Events</a>
 </nav>
-<img src="https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=1786&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" width="1600" height="600"> 
+
+<div class="image-container">
+    <img src="https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=1786&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="School Management System">
+</div>
+
 <div class="container">
     <a href="{% url 'marksheet' %}" class="card" id="marksheet">
         <img src="https://via.placeholder.com/100" alt="Marksheet">
@@ -139,3 +152,4 @@
 
 </body>
 </html>
+
