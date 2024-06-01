@@ -37,10 +37,14 @@
             width: 100%;
             overflow: hidden;
         }
+        
         .image-container img {
             width: 100%;
             height: auto;
             display: block;
+            max-width: 1500px; 
+            max-height: 500px;
+            margin: 0 auto; 
         }
         .container {
             display: flex;
@@ -110,37 +114,37 @@
 
 <div class="container">
     <a href="{% url 'marksheet' %}" class="card" id="marksheet">
-        <img src="https://via.placeholder.com/100" alt="Marksheet">
+        <img src="https://img.icons8.com/ios-filled/100/1abc9c/document.png"  alt="Marksheet">
         <h3>Marksheet</h3>
         <p>View and manage student marksheets</p>
     </a>
     <a href="{% url 'award_winnerspage' %}" class="card" id="games">
-        <img src="https://via.placeholder.com/100" alt="Games">
+        <img src="https://img.icons8.com/ios-filled/100/1abc9c/trophy.png" alt="Games">
         <h3>Games</h3>
         <p>Manage and schedule school games</p>
     </a>
     <a href="{% url 'student_attendance' %}" class="card" id="attendance">
-        <img src="https://via.placeholder.com/100" alt="Attendance">
+        <img src="https://img.icons8.com/ios-filled/100/1abc9c/todo-list.png"  alt="Attendance">
         <h3>Attendance</h3>
         <p>Track student attendance records</p>
     </a>
     <a href="{% url 'login' %}" class="card" id="user">
-        <img src="https://via.placeholder.com/100" alt="User">
+        <img src="https://img.icons8.com/ios-filled/100/1abc9c/user.png" alt="User">
         <h3>User</h3>
         <p>Manage user accounts and profiles</p>
     </a>
     <a href="{% url 'Student' %}" class="card" id="student">
-        <img src="https://via.placeholder.com/100" alt="Student">
+        <img src="https://img.icons8.com/ios-filled/100/1abc9c/student-male.png"  alt="Student">
         <h3>Student</h3>
         <p>View and manage student details</p>
     </a>
     <a href="{% url 'fees' %}" class="card" id="payment">
-        <img src="https://via.placeholder.com/100" alt="Payment">
+        <img src="https://img.icons8.com/ios-filled/100/1abc9c/money.png"  alt="Payment">
         <h3>Payment</h3>
         <p>Manage payment records and dues</p>
     </a>
     <a href="{% url 'event' %}" class="card" id="events">
-        <img src="https://via.placeholder.com/100" alt="Events">
+        <img src="https://img.icons8.com/ios-filled/100/1abc9c/calendar.png"  alt="Events">
         <h3>Events</h3>
         <p>View and manage school events</p>
     </a>
@@ -152,4 +156,5 @@
 
 </body>
 </html>
+
 
