@@ -9,11 +9,11 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background: linear-gradient(to right, #e0f7fa, #ecf0f1); /* Gradient background */
             color: #333;
         }
         header {
-            background-color: #34495e;
+            background-color: #2980b9; /* Lighter blue-grey */
             color: white;
             padding: 1rem;
             text-align: center;
@@ -21,7 +21,7 @@
         nav {
             display: flex;
             justify-content: space-around;
-            background-color: #2c3e50;
+            background-color: #3498db; /* Light blue */
         }
         nav a {
             color: white;
@@ -30,7 +30,7 @@
             text-align: center;
         }
         nav a:hover {
-            background-color: #1abc9c;
+            background-color: #1abc9c; /* Teal */
             color: white;
         }
         .container {
@@ -40,7 +40,7 @@
             padding: 20px;
         }
         .card {
-            background-color: white;
+            background-color: #ffffff; /* White for good contrast against gradient */
             width: 220px;
             margin: 20px;
             padding: 20px;
@@ -53,23 +53,25 @@
         }
         .card:hover {
             transform: scale(1.05);
+            background-color: #d0e4e6; /* Slightly darker grey-blue */
         }
         .card img {
             width: 100px;
             height: 100px;
             margin-bottom: 15px;
             border-radius: 50%;
-            border: 2px solid #1abc9c;
+            border: 2px solid #1abc9c; /* Teal */
+            object-fit: cover;
         }
         .card h3 {
             margin-bottom: 15px;
-            color: #34495e;
+            color: #2980b9; /* Lighter blue-grey */
         }
         .card p {
-            color: #777;
+            color: #2980b9; /* Lighter blue-grey */
         }
         footer {
-            background-color: #34495e;
+            background-color: #2980b9; /* Lighter blue-grey */
             color: white;
             text-align: center;
             padding: 10px 0;
@@ -97,37 +99,37 @@
 <img src="https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=1786&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" width="1600" height="600"> 
 <div class="container">
     <a href="{% url 'marksheet' %}" class="card" id="marksheet">
-        <img src="https://via.placeholder.com/100" alt="Marksheet">
+        <img src="https://img.icons8.com/ios-filled/100/1abc9c/document.png" alt="Marksheet">
         <h3>Marksheet</h3>
         <p>View and manage student marksheets</p>
     </a>
     <a href="{% url 'award_winnerspage' %}" class="card" id="games">
-        <img src="https://via.placeholder.com/100" alt="Games">
+        <img src="https://img.icons8.com/ios-filled/100/1abc9c/trophy.png" alt="Games">
         <h3>Games</h3>
         <p>Manage and schedule school games</p>
     </a>
     <a href="{% url 'student_attendance' %}" class="card" id="attendance">
-        <img src="https://via.placeholder.com/100" alt="Attendance">
+        <img src="https://img.icons8.com/ios-filled/100/1abc9c/todo-list.png" alt="Attendance">
         <h3>Attendance</h3>
         <p>Track student attendance records</p>
     </a>
     <a href="{% url 'login' %}" class="card" id="user">
-        <img src="https://via.placeholder.com/100" alt="User">
+        <img src="https://img.icons8.com/ios-filled/100/1abc9c/user.png" alt="User">
         <h3>User</h3>
         <p>Manage user accounts and profiles</p>
     </a>
     <a href="{% url 'Student' %}" class="card" id="student">
-        <img src="https://via.placeholder.com/100" alt="Student">
+        <img src="https://img.icons8.com/ios-filled/100/1abc9c/student-male.png" alt="Student">
         <h3>Student</h3>
         <p>View and manage student details</p>
     </a>
     <a href="{% url 'fees' %}" class="card" id="payment">
-        <img src="https://via.placeholder.com/100" alt="Payment">
+        <img src="https://img.icons8.com/ios-filled/100/1abc9c/money.png" alt="Payment">
         <h3>Payment</h3>
         <p>Manage payment records and dues</p>
     </a>
     <a href="{% url 'event' %}" class="card" id="events">
-        <img src="https://via.placeholder.com/100" alt="Events">
+        <img src="https://img.icons8.com/ios-filled/100/1abc9c/calendar.png" alt="Events">
         <h3>Events</h3>
         <p>View and manage school events</p>
     </a>
