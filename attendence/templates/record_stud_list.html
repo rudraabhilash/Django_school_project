@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Records</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #000000, #222222); /* Gradient from black to dark gray */
+            margin: 0;
+            padding: 0;
+            color: #ffffff; /* Text color */
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent white background */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #ffffff; /* Heading color */
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Semi-transparent white border */
+            padding: 10px 0;
+        }
+
+        li:last-child {
+            border-bottom: none;
+        }
+
+        .present {
+            color: green;
+        }
+
+        .absent {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Attendance Records for Student ID: {{ student_id }}</h1>
+        <p>Date Range: {{ start_date }} to {{ end_date }}</p>
+        
+        <h2>Attendance Records</h2>
+        <ul>
+            {% for date in combined_dates %}
+                <li>{{ date }} - {% if date in present_dates %}<span class="present">Present</span>{% else %}<span class="absent">Absent</span>{% endif %}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
