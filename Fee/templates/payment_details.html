@@ -18,16 +18,49 @@
         padding: 30px;
         border-radius: 10px;
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+	animation: fadeIn 1s ease-in-out;
+    }
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
     h1 {
         text-align: center;
         color: white;
         margin-bottom: 20px;
+	animation: slideIn 1s ease-in-out;
+    }
+     @keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translateX(-50px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
     }
     .form-group {
         display: flex;
         align-items: center;
         margin-bottom: 20px;
+	animation: formFadeIn 1s ease-in-out;
+    }
+     @keyframes formFadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
     .form-group label {
         flex: 0 0 150px;
@@ -43,7 +76,7 @@
         border-radius: 5px;
         box-sizing: border-box;
         background-color: #f9f9f9;
-        transition: background-color 0.3s ease;
+        transition: background-color 0.3s ease, border-color 0.3s ease;
     }
     .form-group input[type="text"]:focus,
     .form-group input[type="date"]:focus {
