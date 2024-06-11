@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.template import loader
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
-from .models import Marksheet, Subject
+from .models import Marksheet, Subject 
 
 @csrf_exempt
 def welcome(request):
@@ -47,3 +47,29 @@ def marksheetsuccess(request):
 def subject_view(request):
     subjects = Subject.objects.all()
     return render(request, 'subject_template.html', {'subjects': subjects})
+
+
+
+#-----------------------------------------------------------------------------------#
+from django.shortcuts import render
+from .forms import MarksheetForm
+from .models import Marksheet
+
+def marksheet_view(request):
+    marksheet = None
+    if request.method == 'POST':
+        form = MarksheetForm(request.POST)
+        if form.is_valid():
+            student_id = form.cleaned_data['student_id']
+            session = form.cleaned_data['session']
+            # semester = form.cleaned_data['semester']
+            
+            # ORM query to fetch the marksheet
+            marksheet = Marksheet.objects.filter(student_id=student_id, session=session)
+    else:
+        form = MarksheetForm()
+
+    return render(request, 'marksheet_form.html', {'form': form, 'marksheet': marksheet})
+
+
+   

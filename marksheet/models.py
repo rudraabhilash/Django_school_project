@@ -25,4 +25,17 @@ class Subject(models.Model):
     teachers = models.CharField(max_length=100)
     books = models.CharField(max_length=100)
 
+
+    from django.db import models
+
+class Form(models.Model):
+    ID = models.CharField(max_length=20)
+    session = models.CharField(max_length=20)
+    semester = models.CharField(max_length=20)
+   
+
+    def __str__(self):
+        return f"{self.ID} - {self.session} - {self.semester} "
+
+
     
