@@ -36,7 +36,10 @@
         font-weight: bold;
     }
     .form-group input[type="text"],
-    .form-group input[type="date"] {
+    .form-group input[type="date"],
+    .form-group input[type="number"],
+    .form-group input[type="file"],
+    .form-group select {
         flex: 1;
         padding: 12px;
         border: 1px solid #ccc;
@@ -44,9 +47,13 @@
         box-sizing: border-box;
         background-color: #f9f9f9;
         transition: background-color 0.3s ease;
+        width: calc(100% - 170px); /* Adjust the width calculation */
     }
     .form-group input[type="text"]:focus,
-    .form-group input[type="date"]:focus {
+    .form-group input[type="date"]:focus,
+    .form-group input[type="number"]:focus,
+    .form-group input[type="file"]:focus,
+    .form-group select:focus {
         background-color: #e0f7fa;
         border-color: #007bff;
     }
@@ -64,23 +71,24 @@
     input[type="submit"]:hover {
         background-color: #e44d07;
     }
-    .para{
+    .para {
         color: white;
+        text-align: center; /* Center align the text for the paragraph */
     }
-    .url{
+    .url {
         color: #06a03c;
     }
-    .url:hover{
+    .url:hover {
         color: #e44d07;
     }
 </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>Event Registration</h1>
-        <form method="post" action="/event_submit/" >
-            {% csrf_token %}
+<div class="container">
+    <h1>Event Registration</h1>
+    <form method="post" action="/event_submit/" enctype="multipart/form-data">
+        {% csrf_token %}
         <div class="form-group">
             <label for="event_name">Event Name:</label>
             <input type="text" id="event_name" name="event_name" placeholder="Event name" required>
@@ -107,20 +115,24 @@
         </div>
         <div class="form-group">
             <label for="event_type">Event Type:</label>
-            <input type="text" id="event_type" name="event_type" placeholder="Event type" required>
+            <select id="event_type" name="event_type" required>
+                <option value="">Select event type</option>
+                <option value="cultural">Cultural</option>
+                <option value="technical">Technical</option>
+            </select>
         </div>
         <div class="form-group">
             <label for="event_winner_id">Event Winner ID:</label>
             <input type="text" id="event_winner_id" name="event_winner_id" placeholder="Event winner id" required>
         </div>
         <div class="form-group">
-            <label for="event_image_location">Event Image Location:</label>
-            <input type="text" id="event_image_location" name="event_image_location" placeholder="Event images" required>
+            <label for="event_image_location">Upload Event Image:</label>
+            <input type="file" id="event_image_location" name="event_image_location">
         </div>
-            <input type="submit" value="Submit">
-        </form>
-        <p class="para"> click <a class="url" href="/event_details/">here</a> to know more about event</p>
-    </div>
+        <input type="submit" value="Submit">
+    </form>
+    <p class="para">Click <a class="url" href="/event_details/">here</a> to know more about the event</p>
+</div>
 
 </body>
 </html>

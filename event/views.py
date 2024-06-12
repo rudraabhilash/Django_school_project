@@ -16,7 +16,7 @@ def event_form(request):
 @csrf_exempt
 def event_form_submit(request):
     if request.method == 'POST':
-        form = Event_Form(request.POST)
+        form = Event_Form(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect("eventsubmit_form")
@@ -31,10 +31,35 @@ def submited_form(request):
 
 #event detailing function
 def event_details(request):
-    mydetails= Event_Table.objects.all().values()
-    template = loader.get_template('submit.html')
+    mydetails= Event_Table.objects.values_list('id','event_name','event_date').distinct()
+    template = loader.get_template('event_name_details.html')
     context = {
         'mydata':mydetails,
     }  
-    return HttpResponse(template.render(context, request))  
+    return HttpResponse(template.render(context, request))
 
+def specific_event_details(request, event_name):
+    mydetails= Event_Table.objects.filter(event_name=event_name)
+    
+    template = loader.get_template('specific_event.html')
+    context = {
+        'mydata':mydetails,
+    }  
+    return HttpResponse(template.render(context, request)) 
+
+def event_image(request, id):
+    single_event_image = Event_Table.objects.filter(id=id)
+    template = loader.get_template('images.html')
+    context = {
+        'image':single_event_image,
+    }
+    return HttpResponse(template.render(context, request))
+
+def event_all_images(request):
+    images=Event_Table.objects.filter()    #on using filter() all images will be shown
+    template = loader.get_template('images.html')
+    context = {
+        'image':images,
+    }
+    return HttpResponse(template.render(context, request))
+    

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Table</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid rgb(239, 226, 226);
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            color: white; /* Make header text white */
+        }
+        td, p {
+            color: white; /* Make table data text white */
+        }
+
+        html {
+            font-family: 'Roboto', sans-serif; /* Use Roboto font */
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #000000, #333333); /* Smooth gradient from black to dark gray */
+            background-repeat: no-repeat;
+            height: 100%; /* Ensure the HTML element covers the entire viewport height */
+        }
+        h1 {
+            color: white;
+            text-align: center; /* Center the header text */
+        }
+        .url-button {
+            position: relative;
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #5dbea3;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .url-button:hover {
+            background-color: #0077aa;
+        }
+        .url-button .tooltip {
+            visibility: hidden;
+            width: 120px;
+            background-color: #555;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+            position: absolute;
+            z-index: 1;
+            left: 105%; /* Position the tooltip to the right of the button */
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 12px; /* Smaller font size */
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .url-button .tooltip::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: 100%; /* Left of the tooltip */
+            margin-top: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: transparent #555 transparent transparent;
+        }
+        .url-button:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+        a.url {
+            color: #00bcd4;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        a.url:hover {
+            color: #0097a7;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Event Details</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>event_id</th>
+                    <th>event_name</th>
+                    <th>event_date</th>
+                    <th>event_duration</th>
+                    <th>event_guest</th>
+                    <th>event_participation_count</th>
+                    <th>event_cost</th>
+                    <th>event_type</th>
+                    <th>event_winner_id</th>
+                    <th>event_image_location</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for x in mydata %}
+                    <tr>
+                        <td>{{x.id}}</td>
+                        <td>
+                            <a class="url-button" href="/event_image/{{x.id}}">
+                                {{x.event_name}}
+                                <span class="tooltip">click to see related pictures</span>
+                            </a>
+                        </td> 
+                        <td>{{x.event_date}}</td>                                
+                        <td>{{x.event_duration }}</td>
+                        <td>{{x.event_guest }}</td>
+                        <td>{{x.event_participation_count }}</td>
+                        <td>{{x.event_cost }}</td>
+                        <td>{{x.event_type }}</td>
+                        <td>{{x.event_winner_id }}</td>
+                        <td>{{x.event_image_location }}</td>    
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <p class="para"> click <a class="url" href="/event_all_image/">here</a> to see all images</p>
+    </div>
+</body>
+</html>

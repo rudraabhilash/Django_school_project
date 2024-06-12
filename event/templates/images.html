@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Display</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #111; /* Set the background to a dark color */
+            color: #fff; /* Set the text color to white */
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+            color: #fff; /* Ensure header text is white */
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto; /* Center the container */
+            background-color: #222; /* Set the container background to a dark color */
+            padding: 20px;
+            border-radius: 10px; /* Add some rounded corners */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Add a subtle shadow */
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+            border-bottom: 1px solid #444; /* Adjust the border color to a dark shade */
+        }
+        th {
+            background-color: #333; /* Set the header background color to a dark shade */
+        }
+        img {
+            width: 800px; /* Set a fixed width */
+            height: 400px; /* Set a fixed height */
+            object-fit: cover; /* Ensure the image covers the specified dimensions */
+            border-radius: 5px; /* Add some rounded corners to images */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Event Gallery</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Event Name</th>
+                    <th>Image</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for x in image %}
+                <tr>
+                    <td>{{ x.event_name }}</td>
+                    <td>
+                        {% if x.event_image_location %}
+                            <img src="{{ x.event_image_location.url }}" alt="Event Image">
+                        {% else %}
+                            No image available
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

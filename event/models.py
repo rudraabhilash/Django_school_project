@@ -12,6 +12,6 @@ class Event_Table(models.Model):
   event_cost = models.IntegerField(null=True)
   event_type = models.CharField(max_length=255)
   event_winner_id = models.IntegerField(null=True)
-  event_image_location = models.CharField(max_length=255)
+  event_image_location = models.ImageField(upload_to='event/static')
   
   
