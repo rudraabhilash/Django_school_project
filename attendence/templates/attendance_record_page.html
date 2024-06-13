@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stylish Form</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(45deg, #6ab7ff, #4e54c8);
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .form-container {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .input-group {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            font-size: 18px;
+            border: 2px solid #4e54c8;
+            border-radius: 5px;
+            outline: none;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 10px;
+            color: #4e54c8;
+            font-size: 16px;
+        }
+
+        .input-group input:focus,
+        .input-group input:valid {
+            border-color: #6ab7ff;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 10px;
+            font-size: 18px;
+            color: white;
+            background: linear-gradient(45deg, #6ab7ff, #4e54c8);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .submit-button:hover {
+            background: linear-gradient(45deg, #4e54c8, #6ab7ff);
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <form method="post" action="{% url 'attendance_record_process' %}">
+            {% csrf_token %}
+            <div class="input-group">
+                <label for="student_id">Enter Student ID</label>
+                <input type="text" id="student_id" name="student_id" required>
+            </div>
+            <div class="input-group">
+                <label for="start_date">Start Date</label>
+                <input type="date" id="start_date" name="start_date" required>
+            </div>
+            <div class="input-group">
+                <label for="end_date">End Date</label>
+                <input type="date" id="end_date" name="end_date" required>
+            </div>
+            <button type="submit" class="submit-button">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
