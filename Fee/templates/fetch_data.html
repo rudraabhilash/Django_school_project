@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #000000, #333333); 
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto; 
+            background-color: #1a1a1a;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        h1 {
+            text-align: center;
+            color: white;
+            margin-bottom: 20px;
+            animation: slideIn 1s ease-in-out;
+        }
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        .form-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            animation: formFadeIn 1s ease-in-out;
+        }
+        @keyframes formFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .form-group label {
+            flex: 0 0 150px;
+            margin-right: 10px;
+            color: white;
+            font-weight: bold;
+        }
+        .form-group input[type="text"],
+        .form-group input[type="date"] {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            background-color: #f9f9f9;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+        .form-group input[type="text"]:focus,
+        .form-group input[type="date"]:focus {
+            background-color: #e0f7fa;
+            border-color: #007bff;
+        }
+        input[type="submit"] {
+            width: 100%;
+            background-color: #06a03c;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #e44d07;
+        }
+        .para {
+            color: white;
+            text-align: center;
+        }
+        .url {
+            color: #06a03c;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .url:hover {
+            color: #e44d07;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Fetch Data by ID and Date Range</h1>
+        <form action="/fetch_data/" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="student_id">Enter ID:</label>
+                <input type="text" id="student_id" name="student_id" required><br><br>
+            </div>
+            <div class="form-group">
+                <label for="start_date">Start Date:</label>
+                <!-- Ensure date format is YYYY-MM-DD -->
+                <input type="date" id="start_date" name="start_date" pattern="\d{4}-\d{2}-\d{2}" required><br><br>
+            </div>
+            <div class="form-group">
+                <label for="end_date">End Date:</label>
+                <!-- Ensure date format is YYYY-MM-DD -->
+                <input type="date" id="end_date" name="end_date" pattern="\d{4}-\d{2}-\d{2}" required><br><br>
+            </div>
+            
+            <input type="submit" value="Fetch Data">
+        </form>
+    </div>
+    
+</body>
+</html>

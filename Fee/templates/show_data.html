@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Results</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid rgb(239, 226, 226);
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            color: white; /* Make header text white */
+        }
+        td {
+            color: white; /* Make table data text white */
+        }
+
+        html {
+            font-family: 'Roboto', sans-serif; /* Use Roboto font */
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #000000, #333333); /* Smooth gradient from black to dark gray */
+            background-repeat: no-repeat;
+            height: 100%; /* Ensure the HTML element covers the entire viewport height */
+        }
+        h1 {
+            color: white;
+            text-align: center; /* Center the header text */
+        }
+        .para {
+        color: white;
+        text-align: center;
+    }
+    .url {
+        color: #06a03c;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+    .url:hover {
+        color: #e44d07;
+    }
+    </style>
+</head>
+<body>
+    <h1>Data for ID: {{ student_id }}</h1>
+    <p class="para">
+        To download pdf click <a class="url" href="{% url 'download_pdf' student_id start_date end_date %}">here</a>
+    </p>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Student Id</th>
+                <th>Fee Paid</th>
+                <th>Date of Payment</th>
+                <th>Due</th>
+                <th>Payment Mode</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for x in paymentstatus %}
+                <tr>
+                    <td>{{ x.id }}</td>
+                    <td>{{ x.student_id }}</td>
+                    <td>{{ x.fee_paid }}</td>
+                    <td>{{ x.date_of_payment }}</td>
+                    <td>{{ x.due }}</td>
+                    <td>{{ x.payment_mode }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+
+
+</body>
+</html>
