@@ -1,4 +1,4 @@
-![image](https://github.com/rudraabhilash/Django_school_project/assets/8148039/2d945aec-04fc-4d55-bf92-65b0fd68cc58)This Django school management solution is hosted on aws infrastructure.
+This Django school management solution is hosted on aws infrastructure.
 URL - http://bhaktivedantaint.ap-south-1.elasticbeanstalk.com/
 
 Homepage - 
