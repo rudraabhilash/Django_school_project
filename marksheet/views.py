@@ -51,25 +51,24 @@ def subject_view(request):
 
 
 #-----------------------------------------------------------------------------------#
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .forms import MarksheetForm
 from .models import Marksheet
 
 def marksheet_view(request):
-    marksheet = None
-    if request.method == 'POST':
-        form = MarksheetForm(request.POST)
-        if form.is_valid():
-            student_id = form.cleaned_data['student_id']
-            session = form.cleaned_data['session']
-            # semester = form.cleaned_data['semester']
-            
-            # ORM query to fetch the marksheet
-            marksheet = Marksheet.objects.filter(student_id=student_id, session=session)
+    if request.session.has_key('user'): 
+        marksheet = None
+        if request.method == 'POST':
+            form = MarksheetForm(request.POST)
+            if form.is_valid():
+                student_id = form.cleaned_data['student_id']
+                session = form.cleaned_data['session']
+                
+                # ORM query to fetch the marksheet
+                marksheet = Marksheet.objects.filter(student_id=student_id, session=session)
+        else:
+            form = MarksheetForm()
+
+        return render(request, 'marksheet_form.html', {'form': form, 'marksheet': marksheet})
     else:
-        form = MarksheetForm()
-
-    return render(request, 'marksheet_form.html', {'form': form, 'marksheet': marksheet})
-
-
-   
+        return redirect('/login')

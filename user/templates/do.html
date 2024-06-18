@@ -47,6 +47,21 @@
         a:hover {
             color: #45a049;
         }
+
+        .logout-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .logout-button:hover {
+            background-color: #45a049;
+        }
     </style>
 </head>
 
@@ -58,9 +73,11 @@
         <p>Date of Joining: {{ user.date_of_joining }}</p>
         <p>Role: {{ user.role }}</p>
         <p>Last Login: {{ last_login_before_update }}</p>
-        <p>Email: {{ user.email_id}}</p>
-        <p>Active: {{ user.is_active}}</p>
+        <p>Email: {{ user.email_id }}</p>
+        <p>Active: {{ user.is_active }}</p>
+        <p>check your  <a href="/marksheet_view">marksheet</a></p>
 
+        <a class="logout-button" href="/logout">Logout</a>
         <p>Back to <a href="/login">Login Page</a></p>
     </div>
 
