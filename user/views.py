@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.template import loader
 from .forms import FeestatusForm
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.views.decorators.csrf import csrf_exempt
 from.models import User
 from django.utils import timezone
@@ -34,7 +34,7 @@ def members2(request):
             user = User.objects.get(user_name=user_name)
             if (password== user.password):
                 a=user.last_login
-
+                request.session['user']=user.user_name
                 
                 # User authenticated, redirect to profile page or return user data
                 context={
@@ -59,3 +59,6 @@ def members2(request):
             # Username does not exist, handle accordingly
             pass
     return render(request, 'some.html')
+def logout(request):
+    del request.session['user']
+    return redirect('/login')
