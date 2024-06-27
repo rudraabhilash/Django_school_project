@@ -82,6 +82,20 @@
         color: #e44d07;
     }
 </style>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get the current date
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0
+        var yyyy = today.getFullYear();
+
+        today = yyyy + '-' + mm + '-' + dd;
+
+        // Set the max attribute to today's date
+        document.getElementById('event_date').setAttribute('max', today);
+    });
+</script>
 </head>
 <body>
 
@@ -91,15 +105,15 @@
         {% csrf_token %}
         <div class="form-group">
             <label for="event_name">Event Name:</label>
-            <input type="text" id="event_name" name="event_name" placeholder="Event name" required>
+            <input type="text" id="event_name" name="event_name" placeholder="Event name" required maxlength="30" required>
         </div>
         <div class="form-group">
             <label for="event_date">Event Date:</label>
-            <input type="date" id="event_date" name="event_date" placeholder="Event date">
+            <input type="date" id="event_date" name="event_date" required min="2020-01-01" placeholder="Event date">
         </div>
         <div class="form-group">
             <label for="event_duration">Event Duration (hours):</label>
-            <input type="number" id="event_duration" name="event_duration" placeholder="Event duration" required>
+            <input type="number" id="event_duration" name="event_duration" placeholder="Event duration" min='0' required>
         </div>
         <div class="form-group">
             <label for="event_guest">Event Guest:</label>
@@ -107,7 +121,7 @@
         </div>
         <div class="form-group">
             <label for="event_participation_count">Participation Count:</label>
-            <input type="number" id="event_participation_count" name="event_participation_count" placeholder="Number of participants" required>
+            <input type="number" id="event_participation_count" name="event_participation_count" min = '0' step='1' placeholder="Number of participants" required>
         </div>
         <div class="form-group">
             <label for="event_cost">Event Cost:</label>
@@ -127,11 +141,11 @@
         </div>
         <div class="form-group">
             <label for="event_image_location">Upload Event Image:</label>
-            <input type="file" id="event_image_location" name="event_image_location">
+            <input type="file" multiple id="event_image_location" name="event_image_location">
         </div>
         <input type="submit" value="Submit">
     </form>
-    <p class="para">Click <a class="url" href="/event_details/">here</a> to know more about the event</p>
+    <p class="para">Click <a class="url" href="/event_details/">here</a> to see event</p>
 </div>
 
 </body>
