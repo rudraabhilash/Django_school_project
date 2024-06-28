@@ -107,6 +107,7 @@
 
         input[type="text"],
         input[type="datetime-local"],
+        input[type="date"],
         input[type="submit"] {
             width: calc(100% - 20px);
             padding: 12px 15px;
@@ -137,7 +138,8 @@
         }
 
         input[type="text"]:hover,
-        input[type="datetime-local"]:hover {
+        input[type="datetime-local"]:hover,
+        input[type="date"]:hover {
             border-color: #aaaaaa;
         }
 
@@ -167,6 +169,8 @@
     <div class="nav-links">
         <a href="/standard">Go to Standard Details Page</a>
         <a href="/schedule">Go to Schedule Details Page</a>
+        <a href="/attendance_record">Go to Attendance Record Page</a>
+    
     </div>
     <div class="container">
         <form method="post" action="{% url 'student_attendance_entry_process' %}">
@@ -179,7 +183,10 @@
           
             <label for="exit_time">Exit Time:</label><br> 
             <input type="datetime-local" name="exit_time" id="exit_time"><br>
-          
+
+            <label for="date">Date:</label><br>
+            <input type="date" name="date" id="date"><br>
+
             <input type="submit" value="Submit">
         </form>
     </div>
