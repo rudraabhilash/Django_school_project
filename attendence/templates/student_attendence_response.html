@@ -2,116 +2,74 @@
 <html>
 <head>
     <style>
-        html {
-            font-family: 'Roboto', sans-serif; /* Use Roboto font */
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(to bottom, #000000, #333333 50%, #000000 100%) repeat-y; /* Smooth gradient from black to dark gray, repeated vertically */
-            background-size: 100% 400px; /* Set the background size to allow smooth repeating */
-            height: 100%; /* Ensure the HTML element covers the entire viewport height */
-        }
-        
-        body {
+        html, body {
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
             height: 100%;
-            background: inherit; /* Ensure the body inherits the background from html */
+            background: linear-gradient(to bottom, #000000, #333333 50%, #000000 100%) repeat-y;
+            background-size: 100% 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #ffffff;
+            text-align: center;
+            animation: fadeIn 2s ease;
         }
         
+        .message-container {
+            text-align: center;
+            animation: fadeInUp 1s ease; /* Fade in and up animation */
+        }
+
         h1 {
-            text-align: center;
-            color: #ffffff;
-            margin-top: 50px;
-            animation: fadeInDown 1s ease; /* Fade in animation */
-        }
-
-        table {
-            border-collapse: collapse;
-            width: 80%;
-            margin: 0 auto;
-            background-color: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            animation: slideInLeft 1s ease; /* Slide in animation */
-        }
-
-        th, td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid #dddddd;
-        }
-
-        p {
-            text-align: center;
-            margin-top: 20px;
+            margin-bottom: 20px;
         }
 
         .back-link {
-            color: #4CAF50; /* Green color */
+            color: #4CAF50;
             text-decoration: none;
             font-weight: bold;
             padding: 10px 20px;
             border: 2px solid #4CAF50;
             border-radius: 5px;
-            transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for background and text color */
+            transition: background-color 0.3s ease, color 0.3s ease;
+            display: inline-block;
         }
 
         .back-link:hover {
-            background-color: #4CAF50; /* Green background */
-            color: #ffffff; /* White text */
-        }
-
-        /* Smoother border radius for the form */
-        form {
-            border-radius: 15px;
+            background-color: #4CAF50;
+            color: #ffffff;
         }
 
         /* Keyframes for animations */
-        @keyframes fadeInDown {
+        @keyframes fadeIn {
             from {
                 opacity: 0;
-                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
             }
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
-
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
     </style>
 </head>
 <body>
 
-<h1>ATTENDANCE DETAILS PAGE</h1>
-  
-<table>
-    <tr>
-        <th>student_id</th>
-        <th>entry_time</th>
-        <th>exit_time</th>
-        <th>date</th>
-    </tr>
-    {% for x in temp %}
-    <tr>
-        <td>{{ x.student_id }}</td>
-        <td>{{ x.entry_time }}</td>
-        <td>{{ x.exit_time }}</td>
-        <td>{{ x.date }}</td>
-    </tr>
-    {% endfor %}
-</table>
-
-<p><a href="/student_attendance" class="back-link">BACK TO STUDENT ATTENDANCE PAGE</a></p>
+<div class="message-container">
+    <h1>Attendance has been Succesfully recorded</h1>
+    <p><a href="/student_attendance" class="back-link">BACK TO STUDENT ATTENDANCE PAGE</a></p>
+</div>
 
 </body>
 </html>

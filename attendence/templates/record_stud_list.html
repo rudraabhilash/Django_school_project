@@ -1,0 +1,164 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Records</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(45deg, #6ab7ff, #4e54c8); /* Gradient from light blue to violet */
+            margin: 0;
+            padding: 0;
+            color: #333333; /* Dark text color */
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #ffffff; /* White background */
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #333333; /* Dark text color */
+            font-weight: bold;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #f9f9f9; /* Light background for the table */
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #dddddd; /* Light gray border */
+            transition: background-color 0.3s, color 0.3s; /* Smooth transition for background-color and color */
+            font-weight: bold; /* Bold text */
+        }
+
+        th {
+            background-color: #f0f0f0; /* Light gray background */
+            color: #333333; /* Dark text color */
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:nth-child(even) {
+            background-color: #e0e0e0; /* Slightly darker background for even rows */
+        }
+
+        .present {
+            color: #28a745; /* Green color */
+            font-weight: bold;
+        }
+
+        .absent {
+            color: #dc3545; /* Red color */
+            font-weight: bold;
+        }
+
+        .filter {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .filter button {
+            background-color: transparent;
+            color: #333333;
+            border: 2px solid #333333;
+            padding: 8px 16px;
+            margin: 0 5px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+            font-weight: bold;
+        }
+
+        .filter button:hover {
+            background-color: #333333;
+            color: #ffffff;
+        }
+
+        .filter button.active {
+            background-color: #333333;
+            color: #ffffff;
+            border-color: transparent;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Attendance Records for Student ID: {{ student_id }}</h1>
+        <p>Date Range: {{ start_date }} to {{ end_date }}</p>
+        
+        <div class="filter">
+            Filter by:
+            <button onclick="filter('present')" class="active">Present</button>
+            <button onclick="filter('absent')">Absent</button>
+            <button onclick="showAll()">Show All</button>
+        </div>
+        
+        <h2>Attendance Records</h2>
+        <table id="attendanceTable">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for date in combined_dates %}
+                    <tr class="record">
+                        <td>{{ date }}</td>
+                        <td>{% if date in present_dates %}<span class="present">Present</span>{% else %}<span class="absent">Absent</span>{% endif %}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function filter(status) {
+            var buttons = document.querySelectorAll('.filter button');
+            buttons.forEach(button => {
+                button.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            var rows = document.getElementsByClassName('record');
+            for (var i = 0; i < rows.length; i++) {
+                var row = rows[i];
+                if (row.getElementsByTagName('td')[1].innerText.toLowerCase().includes(status)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            }
+        }
+
+        function showAll() {
+            var buttons = document.querySelectorAll('.filter button');
+            buttons.forEach(button => {
+                button.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            var rows = document.getElementsByClassName('record');
+            for (var i = 0; i < rows.length; i++) {
+                rows[i].style.display = '';
+            }
+        }
+    </script>
+</body>
+</html>
