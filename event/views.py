@@ -3,11 +3,11 @@ from django.http import HttpResponse
 from django.template import loader
 from .forms import Event_Form
 from django.views.decorators.csrf import csrf_exempt
-from .models import Event_Table
+from .models import Event_Table, Event_Image
 # Create your views here.
 
 @csrf_exempt
-def event_form(request):
+def event_registration(request):
     template = loader.get_template('event_form.html')
     return HttpResponse(template.render())
 
@@ -17,11 +17,16 @@ def event_form(request):
 def event_form_submit(request):
     if request.method == 'POST':
         form = Event_Form(request.POST, request.FILES)
+        
         if form.is_valid():
-            form.save()
+            events=form.save(commit=False)
+            images = request.FILES.getlist('event_image_location')
+            events.save()
+            
+            for image in images:
+                event_image = Event_Image.objects.create(event_table=events, event_image_location=image)
             return redirect("eventsubmit_form")
         else:
-            #form = Event_Form()
             return HttpResponse("data not filled correctly!")
         
 #event success page     
@@ -40,7 +45,6 @@ def event_details(request):
 
 def specific_event_details(request, event_name):
     mydetails= Event_Table.objects.filter(event_name=event_name)
-    
     template = loader.get_template('specific_event.html')
     context = {
         'mydata':mydetails,
@@ -48,18 +52,22 @@ def specific_event_details(request, event_name):
     return HttpResponse(template.render(context, request)) 
 
 def event_image(request, id):
-    single_event_image = Event_Table.objects.filter(id=id)
+    single_event_image = Event_Image.objects.filter(event_table_id=id)
+    single_event_table = Event_Table.objects.filter(id=id)
     template = loader.get_template('images.html')
     context = {
-        'image':single_event_image,
+        'images':single_event_image,
+        'ids':single_event_table,
     }
     return HttpResponse(template.render(context, request))
 
 def event_all_images(request):
-    images=Event_Table.objects.filter()    #on using filter() all images will be shown
+    all_images=Event_Image.objects.all()    #on using filter() all images will be shown
+    all_ids = Event_Table.objects.filter()
     template = loader.get_template('images.html')
     context = {
-        'image':images,
+        'images':all_images,
+        'ids':all_ids,
     }
     return HttpResponse(template.render(context, request))
     

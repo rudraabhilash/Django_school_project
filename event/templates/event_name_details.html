@@ -5,28 +5,97 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Table</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
         html, body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            background: #1e1e1e;
+            background: #222831;
+            {% comment %} background-image: url('https://www.curacubby.com/hs-fs/hubfs/school-event-ideas.jpg?width=1200&name=school-event-ideas.jpg'); /* Replace with your image URL */ {% endcomment %}
             color: white;
             height: 100%;
         }
 
         body {
+            display: flex;
+        }
+
+        .sidebar {
+            width: 250px;
+            background: linear-gradient(to top, #2c2d34, #283149);
+            padding: 8px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+            height: 100vh;
+            position: fixed;
+            {% comment %} background-image: url(''); /* Replace with your image URL */ {% endcomment %}
+            background-size: cover;
+            background-blend-mode: overlay;
+        }
+
+        .sidebar h2 {
+            color: #00bcd4;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .sidebar a {
+            display: block;
+            color: #ccc;
+            padding: 10px 10px;
+            text-decoration: none;
+            margin: 10px 0;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .sidebar a:hover {
+            background: #00bcd4;
+            color: white;
+        }
+
+        .content {
+            margin-left: 270px;
+            width: calc(100% - 270px);
+            padding: 20px;
+            {% comment %} background-image: url('https://www.curacubby.com/hs-fs/hubfs/school-event-ideas.jpg?width=1200&name=school-event-ideas.jpg'); /* Replace with your image URL */ {% endcomment %}
+            background-size: cover;
+            background-blend-mode: overlay;
+        }
+
+        .header {
             width: 100%;
-            padding: 20px; /* Add some padding to the body */
+            padding: 60px 0;
+            background: linear-gradient(to right,#2470a0, #0e2e3b);
+            color: white;
+            text-align: center;
+            {% comment %} background-image: url('https://www.curacubby.com/hs-fs/hubfs/school-event-ideas.jpg?width=1200&name=school-event-ideas.jpg'); /* Replace with your image URL */ {% endcomment %}
+            background-size: cover;
+            background-blend-mode: overlay;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        .header p {
+            margin: 5px 0 0;
+            font-size: 1.2rem;
+            font-weight: 400;
         }
 
         .container {
             width: 90%;
             max-width: 1200px;
-            margin: 0 auto;
-            background-color: #2a2a2a;
+            margin: 20px auto;
+            background-color: rgba(44, 45, 52, 0.9); /* Semi-transparent background */
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            {% comment %} background-image: url('https://www.curacubby.com/hs-fs/hubfs/school-event-ideas.jpg?width=1200&name=school-event-ideas.jpg'); /* Replace with your image URL */ {% endcomment %}
+            background-size: cover;
+            background-blend-mode: overlay;
         }
 
         h1 {
@@ -53,7 +122,7 @@
         }
 
         td {
-            background-color: #252525;
+            background-color: #3b3b3b;
             color: #ccc;
         }
 
@@ -74,29 +143,58 @@
         a:hover {
             color: #0097a7;
         }
+
+        .para {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .url {
+            color: #00bcd4;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .url:hover {
+            color: #0097a7;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Organized Event</h1>
-        <table>
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Event Name</th>
-                    <th>Event Date</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for id, event_name, event_date in mydata %}
-                <tr>
-                    <td>{{ id }}</td>
-                    <td><a href="/specific_event_details/{{ event_name }}">{{ event_name }}</a></td>
-                    <td>{{ event_date }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+    <div class="sidebar">
+        <h2>Navigation</h2>
+        <a href="/">Home</a>
+        <a href="/event_registration/">Event Registration</a>
+    </div>
+    <div class="content">
+        <div class="header">
+            
+            <h1>Welcome To Events</h1>
+            {% comment %} <p>Table</p> {% endcomment %}
+            <p></p>
+            <img src="https://img.icons8.com/ios-filled/100/1abc9c/calendar.png"  alt="">
+        </div>
+        <div class="container">
+            <h1>Organized Event</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Event Name</th>
+                        <th>Event Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for id, event_name, event_date in mydata %}
+                    <tr>
+                        <td>{{ id }}</td>
+                        <td><a href="/specific_event_details/{{ event_name }}">{{ event_name }}</a></td>
+                        <td>{{ event_date }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
 </body>
 </html>
