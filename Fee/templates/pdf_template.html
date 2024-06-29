@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PDF Data</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        h1 { text-align: center; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>Data for ID: {{ id_input }}</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Student Id</th>
+                <th>Fee Paid</th>
+                <th>Date of Payment</th>
+                <th>Due</th>
+                <th>Payment Mode</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for x in paymentstatus %}
+                <tr>
+                    <td>{{ x.id }}</td>
+                    <td>{{ x.student_id }}</td>
+                    <td>{{ x.fee_paid }}</td>
+                    <td>{{ x.date_of_payment }}</td>
+                    <td>{{ x.due }}</td>
+                    <td>{{ x.payment_mode }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
