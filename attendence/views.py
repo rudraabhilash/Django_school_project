@@ -10,27 +10,44 @@ from django.views.decorators.csrf import csrf_exempt
 
 @csrf_exempt
 def student_attendance(request):
-    return render(request, 'student_attendance_form.html')
+    if request.session.has_key('user'):
+        c=1
+    else:
+        c=0
+    context={
+        'c':c,
+        
+    }    
+    template = loader.get_template('student_attendance_form.html')
+    return HttpResponse(template.render(context, request))
+
+    
 
 @csrf_exempt
 def student_attendance_entry_process(request):
-    if request.method == 'POST':
+    if request.session.has_key('user'):
+     if request.method == 'POST':
         form = student_attendance_form(request.POST)
         if form.is_valid():
             form.save()
             return redirect('/student_attendance_response')
-    else:
+     else:
         form = student_attendance_form()
-    return render(request, 'student_attendance_form.html', {'form': form})
+        return render(request, 'student_attendance_form.html', {'form': form})
+    else:
+        return render(request, 'student_attendance_form.html', {'error_message': 'please login.'})
 
 @csrf_exempt
 def Standard(request):
-    cur = standard.objects.all().values()
-    template = loader.get_template('standard.html')
-    context = {
+    if request.session.has_key('user'):
+     cur = standard.objects.all().values()
+     template = loader.get_template('standard.html')
+     context = {
         'data': cur,
-    }
-    return HttpResponse(template.render(context, request))
+     }
+     return HttpResponse(template.render(context, request))
+    else:
+         return render(request, 'student_attendance_form.html', {'error_message': 'please login.'})
 
 @csrf_exempt
 def Schedule(request):
@@ -52,7 +69,10 @@ def student_attendance_response(request):
 
 @csrf_exempt
 def attendance_record(request):
-    return render(request, 'attendance_record_page.html')
+    if request.session.has_key('user'):
+     return render(request, 'attendance_record_page.html')
+    else:
+         return render(request, 'student_attendance_form.html', {'error_message': 'please login.'})
 @csrf_exempt
 def attendance_record_process(request):
     if request.method == 'POST':

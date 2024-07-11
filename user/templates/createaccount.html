@@ -87,9 +87,9 @@
     </style>
 </head>
 <body>
-    <div class="form-container" >
+    <div class="form-container">
         <h2>Create Account</h2>
-        <form action="/usersubmit" method="POST" >
+        <form action="/usersubmit" method="POST">
             {% csrf_token %}
             <label for="user_name">Username:</label>
             <input type="text" id="username" name="user_name" required>
@@ -112,10 +112,12 @@
             <label for="date_of_joining">Date of Joining:</label>
             <input type="date" id="date_of_joining" name="date_of_joining" required>
 
-
-           
             <label for="role">Role:</label>
-            <input type="text" id="role" name="role" required>
+            <select id="role" name="role" required>
+                <option value="teacher">Teacher</option>
+                <option value="student">Student</option>
+                <option value="staff">Staff</option>
+            </select>
 
             <button type="submit">Create Account</button>
         </form>
