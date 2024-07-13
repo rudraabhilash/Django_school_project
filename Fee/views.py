@@ -8,8 +8,11 @@ from django.views.decorators.csrf import csrf_exempt
 #fees function
 @csrf_exempt
 def fees(request):
-  template = loader.get_template('payment_details.html')
-  return HttpResponse(template.render())
+  if request.session.has_key('user'):
+   template = loader.get_template('payment_details.html')
+   return HttpResponse(template.render())
+  else:
+     return redirect("login")
 
 #payment_form function
 @csrf_exempt

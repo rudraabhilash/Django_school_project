@@ -15,6 +15,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            position: relative; /* Ensure relative positioning for correct placement of fixed elements */
         }
 
         .home-link {
@@ -35,6 +36,52 @@
         .home-link a:hover {
             background-color: #45a049;
             transform: translateY(-2px); /* Slight lift effect on hover */
+        }
+
+        .logout-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+        }
+
+        .logout-button form {
+            margin: 0; /* Remove default margin for form */
+        }
+
+        .login-button {
+            position: fixed;
+            top: 20px;
+            right: 100px; /* Adjust right position to prevent overlap with logout button */
+        }
+
+        .btn {
+            text-decoration: none;
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease; /* Add transition for background color and transform */
+        }
+
+        .btn:hover {
+            transform: translateY(-2px); /* Slight lift effect on hover */
+        }
+
+        .logout-button .btn {
+            background-color: #f44336;
+            border: none;
+            cursor: pointer;
+        }
+
+        .logout-button .btn:hover {
+            background-color: #d32f2f;
+        }
+
+        .login-button .btn {
+            background-color: #4CAF50;
+        }
+
+        .login-button .btn:hover {
+            background-color: #45a049;
         }
 
         .header {
@@ -147,6 +194,11 @@
             color: #4CAF50; /* Change color on hover */
         }
 
+        .error-message {
+            color: #f44336; /* Red color for error message */
+            margin-bottom: 10px; /* Spacing below error message */
+        }
+
         @keyframes slideDown {
             from {
                 opacity: 0;
@@ -170,11 +222,13 @@
         <a href="/standard">Go to Standard Details Page</a>
         <a href="/schedule">Go to Schedule Details Page</a>
         <a href="/attendance_record">Go to Attendance Record Page</a>
-    
     </div>
     <div class="container">
         <form method="post" action="{% url 'student_attendance_entry_process' %}">
             {% csrf_token %}
+            {% if error_message %}
+                <p class="error-message">{{ error_message }}</p>
+            {% endif %}
             <label for="student_id">Student ID:</label><br>
             <input type="text" name="student_id" id="student_id" placeholder="Enter Student ID"><br>
           
@@ -190,5 +244,19 @@
             <input type="submit" value="Submit">
         </form>
     </div>
+
+    <!-- Login and Logout Buttons -->
+    {% if c == 1 %}
+        <div class="logout-button">
+            <form method="post" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button class="btn btn-logout" type="submit">Logout</button>
+            </form>
+        </div>
+    {% else %}
+        <div class="login-button">
+            <a href="{% url 'login' %}" class="btn btn-login">Login</a>
+        </div>
+    {% endif %}
 </body>
 </html>

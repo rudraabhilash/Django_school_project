@@ -71,18 +71,25 @@
         .login-container a:hover {
             color: #45a049;
         }
+        .error-message {
+            color: #ff3333; /* Red color for error message */
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
     <div class="login-container">
         <h2>Login</h2>
         <form action="/yourdetails" method="post">
+            {% if error_message %}
+                <p class="error-message">{{ error_message }}</p>
+            {% endif %}
             <input type="text" name="username" placeholder="Username" required>
             <input type="password" name="password" placeholder="Password" required>
             <input type="submit" value="Login">
         </form>
         <p>Don't have an account? <a href="/createaccount">Sign up</a></p>
-        <p>go to <a href="/">Home</a></p>
+        <p>Go to <a href="/">Home</a></p>
     </div>
 </body>
 </html>

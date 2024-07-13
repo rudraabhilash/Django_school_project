@@ -30,35 +30,45 @@ def members2(request):
     if request.method == 'POST':
         user_name = request.POST.get('username')
         password = request.POST.get('password')
+        
         try:
             user = User.objects.get(user_name=user_name)
-            if (password== user.password):
-                a=user.last_login
-                request.session['user']=user.user_name
+            
+            # Check if the password matches
+            if password == user.password:
+                # Set the user in session
+                request.session['user'] = user.user_name
                 
-                # User authenticated, redirect to profile page or return user data
-                context={
-                   
-                    'user':user,
-                     'last_login_before_update': a
-                    
+                # Fetch last login time before updating
+                last_login_before_update = user.last_login
                 
-                }
-                template=loader.get_template('do.html')
-                user.last_login=timezone.now()
+                # Update last login time to current time
+                user.last_login = timezone.now()
                 user.save()
                 
+                # Prepare context to render the template
+                context = {
+                    'user': user,
+                    'last_login_before_update': last_login_before_update
+                }
                 
+                # Render the template with the context
+                template = loader.get_template('do.html')
                 return HttpResponse(template.render(context, request))
-            
-            
             else:
-                # Invalid credentials, handle accordingly (e.g., show error message)
-                pass
+                # Password is incorrect, show error message
+                return render(request, 'some.html', {'error_message': 'Incorrect password.'})
+        
         except User.DoesNotExist:
-            # Username does not exist, handle accordingly
-            pass
+            # Username does not exist, show error message
+            return render(request, 'some.html', {'error_message': 'Username does not exist.'})
+    
+    # Handle GET requests or invalid POST data
     return render(request, 'some.html')
 def logout(request):
+ if request.session.has_key('user'): 
     del request.session['user']
     return redirect('/login')
+ else:
+    return redirect('/login')
+ 
