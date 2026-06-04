@@ -43,15 +43,15 @@
         <table>
             <thead>
                 <tr>
-                    <th>Standard Id</th>
+                    <th>Student Id</th>
                     <th>Fee</th>
                 </tr>
             </thead>
             <tbody>
                 {% for x in myfee %}
                     <tr>
-                        <td>{{ x.standard_id }}</td>
-                        <td>{{ x.fee }}</td>
+                        <td>{{ x.student_id }}</td>
+                        <td>{{ x.fee_paid }}</td>
                     </tr>
                 {% endfor %}
             </tbody>

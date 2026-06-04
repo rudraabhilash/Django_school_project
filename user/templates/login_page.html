@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.8/dist/htmx.min.js"></script>
     <title>Login</title>
     <style>
         body {
@@ -44,7 +46,7 @@
         .login-container input[type="password"]::placeholder {
             color: #999; /* Lighter placeholder text */
         }
-        .login-container input[type="submit"] {
+        .login-container button[type="submit"] {
             width: 100%;
             padding: 15px;
             background-color: #4CAF50;
@@ -72,17 +74,45 @@
             color: #45a049;
         }
     </style>
+
 </head>
+<script>
+window.addEventListener("pageshow", function (event) {
+    if (event.persisted) {
+        // page loaded from bfcache
+        window.location.reload();
+    }
+});
+</script>
+
 <body>
-    <div class="login-container">
-        <h2>Login</h2>
-        <form action="/yourdetails" method="post">
-            <input type="text" name="username" placeholder="Username" required>
-            <input type="password" name="password" placeholder="Password" required>
-            <input type="submit" value="Login">
-        </form>
-        <p>Don't have an account? <a href="/createaccount">Sign up</a></p>
-        <p>go to <a href="/">Home</a></p>
+
+
+   <div class="login-container">
+
+     <div id="message-display" >
+
+<!-- 2. संशोधित फॉर्म -->
+  {% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% endif %}
     </div>
+    <form hx-post="{% url 'auth' %}" hx-target="#message-display" hx-swap="innerHTML">
+        {% csrf_token %}
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <button type="submit">Login</button>
+        <p>Don't have an account? <a href="/signup_page">Sign up</a></p>
+        <p>go to <a href="/">Home</a></p>
+    </form>
+
+    </div>
+    
+
+
 </body>
 </html>

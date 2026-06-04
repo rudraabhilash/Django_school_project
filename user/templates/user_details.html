@@ -49,7 +49,14 @@
         }
     </style>
 </head>
-
+<script>
+window.addEventListener("pageshow", function (event) {
+    if (event.persisted) {
+        // page loaded from bfcache
+        window.location.reload();
+    }
+});
+</script>
 <body>
 
     <div class="container">
@@ -61,7 +68,7 @@
         <p>Email: {{ user.email_id}}</p>
         <p>Active: {{ user.is_active}}</p>
 
-        <p>Back to <a href="/login">Login Page</a></p>
+        <p>Logout <a href="/logout"> Here...</a></p>
     </div>
 
 </body>
